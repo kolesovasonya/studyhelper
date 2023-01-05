@@ -1,0 +1,351 @@
+/*---ПОДКЛЮЧЕНИЕ-ОБНУЛЯЮЩЕГО-СТИЛЯ--------------*/
+@import "nuls.scss";
+
+/*---ПОДКЛЮЧЕНИЕ-ШРИФТОВ------------------------*/
+@font-face {
+	font-family: "Cormorant Garamond Regular";
+	src: url("../fonts/CormorantGaramond-Regular.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: normal;
+}
+@font-face {
+	font-family: "Cormorant Garamond SemiBold";
+	src: url("../fonts/CormorantGaramond-SemiBold.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: normal;
+}
+@font-face {
+	font-family: "Cormorant Garamond Bold";
+	src: url("../fonts/CormorantGaramond-Bold.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: normal;
+}
+@font-face {
+	font-family: "Garamond Regular";
+	src: url("../fonts/GaramondPremrPro.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: normal;
+}
+@font-face {
+	font-family: "Garamond Bold";
+	src: url("../fonts/GaramondPremrPro-Bd.ttf") format("truetype");
+	font-style: normal; 
+	font-weight: normal;
+}
+
+/*---ИСПОЛЬЗУЕМЫЕ-ЦВЕТА-------------------------*/
+$dark: #0f0f0f;
+$pink:rgb(224, 171, 180);
+$purple: rgb(164, 85, 164);
+$green: rgb(94, 149, 94);
+$red: rgb(151, 49, 49);
+$darkpurple: rgb(159, 75, 159);
+
+/*---ОСНОВНОЕ-----------------------------------*/
+body {
+	background-color: $pink;
+	font-family: "Cormorant Garamond Regular", sans-serif;
+	color: black;
+}
+
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 1 auto;
+}
+
+section {
+	height: 100vh;
+}
+
+._container {
+	padding: 15px;
+	max-width: 800px;
+	height: 100%;
+	margin: auto;
+}
+
+._ibg {
+	position: relative;
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+}
+
+.locked {
+	display: none;
+}
+
+.card {
+	display: none;
+	width: 100%;
+	height: 100%;
+	background-color: $purple;
+	padding: 25px 0;
+	text-align: center;
+	color: $dark;
+	text-transform: uppercase;
+	border-radius: 15px;
+	font-size: 30px;
+	box-shadow: 5px 5px 20px 2px $dark;
+	li {
+		transition: all 0.5s ease 0s;
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+}
+
+@media (max-width: 500px) {
+	.card {
+		height: 300px;
+		width: 250px;
+		margin: 0 auto;
+		font-size: 25px;
+	}
+}
+
+.card.active {
+	display: block;
+}
+
+.card.right{
+	background-color: $green;
+	transition: all 0.4s ease 0s;
+}
+
+.card.wrong {
+	animation: wrong 200ms infinite alternate;
+	background-color: $red;
+	transition: all 0.4s ease 0s;
+}
+
+@keyframes wrong {
+	from {
+		transform: translateX(0%);
+	}
+  
+	to {
+		transform: translateX(0%);
+	}
+
+	33% {
+		transform: translateX(15px);
+	}
+
+	66% {
+		transform: translateX(-15px);
+	}
+  }
+
+.button {
+	max-width: 250px;
+	margin: 0 auto;
+	a {
+		display: block;
+		background-color: $purple;
+		padding: 25px 0;
+		text-align: center;
+		color: $dark;
+		text-transform: uppercase;
+		border-radius: 15px;
+		font-size: 30px;
+		transition: all 0.3s ease 0s;
+		&:hover{
+			background-color: $darkpurple;
+		}
+	}
+}
+
+@media (max-width: 450px) {
+	.button {
+		padding: 15px 0;
+		width: 150px;
+		a {
+			font-size: 25px;
+		}
+	}
+	.udar__text.title{
+		margin-bottom: 10px;
+	}
+}
+
+/*---ПОВТОРЯЮЩИЕСЯ СТИЛИ------------------------*/
+.title {
+	font-size: 50px;
+	text-align: center;
+	font-family: "Cormorant Garamond Bold";
+	line-height: 110%;
+	margin-bottom: 50px;
+}
+.text {
+	font-size: 20px;
+}
+/*---MAIN---------------------------------------*/
+.main {
+
+	&__container {
+	}
+
+	&__text {
+	}
+
+	&__buttons {
+	}
+}
+
+.buttons {
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: 1fr 1fr;
+		grid-column-gap: 15px;
+		grid-row-gap: 15px;
+	}
+
+	&__item {
+		background-color: $purple;
+		border-radius: 10px;
+		height: 150px;
+		transition: all 0.3s ease 0s;
+		&:hover{
+			background-color: $darkpurple;
+		}
+	}
+}
+.item {
+
+	&__body {
+		color: $dark;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 25px;
+		text-transform: uppercase;
+	}
+}
+
+@media (max-width: 767px) {
+	.title{
+		font-size: 40px;
+	}
+	.buttons__grid{
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (max-width: 530px) {
+	.title{
+		font-size: 30px;
+	}
+	.buttons__item{
+		height: 100px;
+	}
+}
+@media (max-width: 430px) {
+	.title{
+		font-size: 25px;
+	}
+	.text{
+		font-size: 15px;
+	}
+}
+@media (max-width: 350px) {
+	.title{
+		font-size: 20px;
+	}
+	.buttons__item{
+		height: 70px;
+	}
+	.text{
+		font-size: 13px;
+	}
+}
+
+/*----РУССКИЙ------------------------------------------*/
+.rus {
+
+	&__container {
+	}
+
+	&__text {
+	}
+
+	&__buttons {
+	}
+}
+
+.title {
+}
+.buttons {
+
+	&__grid {
+	}
+
+	&__item {
+	}
+}
+.item {
+
+	&__body {
+	}
+}
+.text {
+}
+
+/*---РУССКИЙ-УДАРЕНИЯ---------------------------*/
+.udar {
+
+	&__container {
+	}
+
+	&__text {
+	}
+
+	&__button {
+	}
+
+	&__items {
+		height: 50vh;
+		width: 400px;
+		margin: 25vh auto;
+	}
+}
+
+@media (max-width: 500px) {
+	.udar__items{
+		width: 250px;
+	}
+}
+
+.udar__item__list {
+	margin-top: 30px;
+	text-transform: none;
+	li:not(:last-child) {
+		margin-bottom: 15px;
+	}
+	li {
+		cursor: pointer;
+	}
+}
+
+/*----------------------------------------------*/
+
+/*----------------------------------------------*/
+
+/*----------------------------------------------*/
+
+/*----------------------------------------------*/
+
+/*---ФУТЕР--------------------------------------*/
